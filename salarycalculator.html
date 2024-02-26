@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Calculator</title>
+    <style>
+    body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: aqua;
+    color: black;
+  }
+  .container{
+    background-color: whitesmoke;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 20px 10px 20px;
+  }
+  label{
+    display: block;
+    margin-bottom: 10px;
+  }
+  input {
+    margin-bottom: 20px;
+    border: none;
+    font-size: 20px;
+    border-bottom: 2px solid black;
+    background-color: white ;
+    
+}
+input:focus{
+    outline: none;
+}
+button{
+    background-color: rgb(0, 174, 255);
+    color: black;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: khaki;
+  }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Salary Calculator</h1>
+        <label for="salary">Enter your annual salary:</label>
+        <input type="number" id="salary" placeholder="Enter annual salary...">
+        <button onclick="calculateSalary()">Calculate</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        function calculateSalary() {
+    var annualSalary = parseFloat(document.getElementById("salary").value);
+    
+    if (isNaN(annualSalary) || annualSalary <= 0) {
+        document.getElementById("result").innerHTML = "Please enter a valid salary amount.";
+        return;
+    }
+
+    var monthlySalary = (annualSalary / 12).toFixed(2);
+    var weeklySalary = (annualSalary / 52 ) .toFixed(2);
+    var dailySalary = (annualSalary / 365).toFixed(2);
+    var hourlySalary = (annualSalary / (365 * 24)).toFixed(2);
+
+    document.getElementById("result").innerHTML = `
+        <p>Annual Salary: ${annualSalary}</p>
+        <p>Weekly Salary: ${weeklySalary}</p>
+        <p>Monthly Salary: ${monthlySalary}</p>
+        <p>Daily Salary: ${dailySalary}</p>
+        
+        
+        <p>Hourly Salary:${hourlySalary}</p>
+    `;
+}
+
+    </script>
+</body>
+</html>
